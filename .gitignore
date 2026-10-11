@@ -1,0 +1,35 @@
+# Dependencies
+node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+!.env.*.example
+
+# SQLite database files
+*.db
+*.db-journal
+*.sqlite
+*.sqlite3
+*.sqlite-wal
+*.sqlite-shm
+database/*.sqlite
+database/*.db
+
+# Uploaded documents
+uploads/*
+!uploads/.gitkeep
+
+# Logs and runtime data
+logs/
+*.log
+npm-debug.log*
+
+# Test coverage
+coverage/
+.nyc_output/
+
+# OS-specific files
+.DS_Store
+Thumbs.db

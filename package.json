@@ -1,0 +1,22 @@
+{
+  "name": "smart-digital-locker-root",
+  "version": "1.0.0",
+  "description": "Smart Digital Locker - Decoupled Frontend and Backend System",
+  "scripts": {
+    "start:backend": "npm --prefix backend start",
+    "dev:backend": "npm --prefix backend run dev",
+    "start:frontend": "npm --prefix frontend start",
+    "dev:frontend": "npm --prefix frontend run dev",
+    "test:backend": "npm --prefix backend test",
+    "test": "npm --prefix backend test"
+  },
+  "keywords": [
+    "digital-locker",
+    "express",
+    "sqlite",
+    "frontend",
+    "backend"
+  ],
+  "author": "Smart Digital Locker Team",
+  "license": "ISC"
+}

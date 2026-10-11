@@ -1,0 +1,16 @@
+{
+  "name": "smart-digital-locker-frontend",
+  "version": "1.0.0",
+  "description": "Smart Digital Locker Frontend Web Application",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "keywords": [
+    "digital-locker",
+    "frontend"
+  ],
+  "author": "Smart Digital Locker Team",
+  "license": "ISC"
+}

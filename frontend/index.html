@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Smart Digital Locker - Secure Cloud Document Storage & Management System">
+  <title>Smart Digital Locker — Secure Document Management</title>
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <!-- Custom Styles & Favicon -->
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E🔒%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <!-- Global Loading Overlay -->
+  <div id="global-loader" class="global-loader hidden">
+    <div class="spinner"></div>
+    <p id="loader-text">Loading...</p>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 1. LANDING PAGE SECTION -->
+  <!-- ========================================== -->
+  <div id="landing-view" class="view-section">
+    <!-- Navigation Bar -->
+    <header class="landing-header">
+      <div class="container nav-container">
+        <div class="brand">
+          <div class="brand-icon"><i class="fa-solid fa-vault"></i></div>
+          <span class="brand-name">DigiLocker<span class="brand-accent">.io</span></span>
+        </div>
+        <nav class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#security">Security</a>
+          <a href="#about">About</a>
+        </nav>
+        <div class="nav-auth-btns">
+          <button id="nav-login-btn" class="btn btn-outline">Log In</button>
+          <button id="nav-register-btn" class="btn btn-primary">Create Account</button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container hero-container">
+        <div class="hero-content">
+          <div class="hero-badge"><i class="fa-solid fa-shield-halved"></i> Military-Grade Encryption</div>
+          <h1 class="hero-title">Your Official Documents, Secured in a <span class="gradient-text">Smart Digital Vault</span>.</h1>
+          <p class="hero-subtitle">
+            Store, organize, and access your certificates, IDs, and official documents anytime from anywhere with instant search and verifiable security.
+          </p>
+          <div class="hero-cta">
+            <button id="hero-get-started-btn" class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-rocket"></i> Get Started Free
+            </button>
+            <button id="hero-demo-btn" class="btn btn-secondary btn-lg">
+              <i class="fa-solid fa-play"></i> Watch Demo
+            </button>
+          </div>
+          <div class="hero-stats">
+            <div class="stat-item">
+              <span class="stat-num">100%</span>
+              <span class="stat-label">Isolated & Secure</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">10 MB</span>
+              <span class="stat-label">Per File Limit</span>
+            </div>
+            <div class="stat-item">
+              <span class="stat-num">PDF/JPG/PNG</span>
+              <span class="stat-label">Format Validation</span>
+            </div>
+          </div>
+        </div>
+        <div class="hero-visual">
+          <div class="glass-card main-preview-card">
+            <div class="preview-header">
+              <div class="window-dots">
+                <span class="dot dot-red"></span>
+                <span class="dot dot-yellow"></span>
+                <span class="dot dot-green"></span>
+              </div>
+              <span class="preview-title"><i class="fa-solid fa-lock"></i> Smart Locker Dashboard</span>
+            </div>
+            <div class="preview-body">
+              <div class="doc-pill-list">
+                <div class="doc-preview-item">
+                  <div class="doc-icon pdf"><i class="fa-solid fa-file-pdf"></i></div>
+                  <div class="doc-info">
+                    <span class="doc-name">Graduation_Degree.pdf</span>
+                    <span class="doc-meta">2.4 MB • Education</span>
+                  </div>
+                  <span class="badge badge-success"><i class="fa-solid fa-check"></i> Verified</span>
+                </div>
+                <div class="doc-preview-item">
+                  <div class="doc-icon img"><i class="fa-solid fa-file-image"></i></div>
+                  <div class="doc-info">
+                    <span class="doc-name">Government_ID_Passport.png</span>
+                    <span class="doc-meta">1.1 MB • Identity</span>
+                  </div>
+                  <span class="badge badge-primary"><i class="fa-solid fa-shield"></i> Protected</span>
+                </div>
+                <div class="doc-preview-item">
+                  <div class="doc-icon docx"><i class="fa-solid fa-file-word"></i></div>
+                  <div class="doc-info">
+                    <span class="doc-name">Project_Thesis_Report.docx</span>
+                    <span class="doc-meta">4.8 MB • Academics</span>
+                  </div>
+                  <span class="badge badge-info"><i class="fa-solid fa-file"></i> Document</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Key Features</span>
+          <h2 class="section-title">Everything You Need for Digital Document Management</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-user-lock"></i></div>
+            <h3>JWT & Bcrypt Security</h3>
+            <p>Passwords hashed with 12 bcrypt salt rounds. Authenticated sessions with signed Bearer JWTs.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-fingerprint"></i></div>
+            <h3>Magic Byte Signature Validation</h3>
+            <p>Every uploaded file is inspected at binary level to block malicious file renaming attacks.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-database"></i></div>
+            <h3>SQLite Metadata Persistence</h3>
+            <p>Metadata stored in SQLite database with foreign key enforcement and fast indexing.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-magnifying-glass"></i></div>
+            <h3>Instant Search & Categories</h3>
+            <p>Filter documents by category or search by document title in real-time.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-cloud-arrow-down"></i></div>
+            <h3>Secure File Downloads</h3>
+            <p>Download your verified original documents safely with sanitized download headers.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-shield-virus"></i></div>
+            <h3>Ownership Isolation</h3>
+            <p>Strict database-level checks ensure no user can access, edit, or delete another user's files.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Security Section -->
+    <section id="security" class="features-section" style="border-top: 1px solid rgba(255, 255, 255, 0.05);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Security Architecture</span>
+          <h2 class="section-title">Zero Trust, Multi-Layered Protection</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-file-shield"></i></div>
+            <h3>Binary File Inspection</h3>
+            <p>Every file is validated against strict magic-byte signatures (PDF, PNG, JPG, DOCX, TXT), preventing disguised executables.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-key"></i></div>
+            <h3>Cryptographic Passwords</h3>
+            <p>Passwords hashed with 12 bcrypt salt rounds and session tokens signed with high-entropy cryptographic secrets.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-user-shield"></i></div>
+            <h3>Strict Data Isolation</h3>
+            <p>Foreign-key enforced user boundaries ensure users can only ever access, download, or edit their own documents.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="features-section" style="background: transparent; border-top: 1px solid rgba(255, 255, 255, 0.05);">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">About DigiLocker</span>
+          <h2 class="section-title">Decoupled, High-Performance Document Vault</h2>
+        </div>
+        <div class="features-grid">
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-bolt"></i></div>
+            <h3>High Speed Architecture</h3>
+            <p>Built with lightweight Vanilla JS frontend, Express REST API, and SQLite with WAL mode for instantaneous queries.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-server"></i></div>
+            <h3>Independent Services</h3>
+            <p>Completely decoupled frontend server and backend API allowing flexible deployment and zero vendor lock-in.</p>
+          </div>
+          <div class="feature-card">
+            <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+            <h3>Privacy First</h3>
+            <p>Zero tracking, no third-party data sharing, and full ownership control over your uploaded files and metadata.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Registration Section -->
+    <section id="register-section" class="features-section" style="border-top: 1px solid rgba(255, 255, 255, 0.05); text-align: center; padding: 4.5rem 0;">
+      <div class="container">
+        <div class="glass-card" style="max-width: 720px; margin: 0 auto; padding: 3rem 2rem;">
+          <div class="hero-badge" style="margin-bottom: 1rem;"><i class="fa-solid fa-user-plus"></i> Free Registration</div>
+          <h2 style="font-family: var(--font-heading); font-size: 2.2rem; font-weight: 700; margin-bottom: 0.75rem;">Create Your Digital Locker Account</h2>
+          <p class="hero-subtitle" style="margin: 0 auto 2rem; max-width: 500px;">
+            Join in seconds to store, organize, and access all your official documents, degrees, and IDs with verified security.
+          </p>
+          <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+            <button id="section-register-btn" class="btn btn-primary btn-lg">
+              <i class="fa-solid fa-rocket"></i> Register Now — It's Free
+            </button>
+            <button id="section-login-btn" class="btn btn-secondary btn-lg">
+              <i class="fa-solid fa-arrow-right-to-bracket"></i> Sign In to Existing Vault
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="landing-footer">
+      <div class="container footer-container">
+        <p>&copy; 2026 Smart Digital Locker. All rights reserved.</p>
+        <p class="footer-meta">Powered by Node.js • Express • SQLite • JWT • Multer</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 2. AUTH MODAL (LOGIN & REGISTER) -->
+  <!-- ========================================== -->
+  <div id="auth-modal" class="modal-overlay hidden">
+    <div class="modal-card auth-card">
+      <button class="modal-close-btn" id="auth-modal-close"><i class="fa-solid fa-xmark"></i></button>
+
+      <!-- Modal Tabs Header -->
+      <div class="auth-tabs">
+        <button id="tab-login-btn" class="auth-tab active">Log In</button>
+        <button id="tab-register-btn" class="auth-tab">Register</button>
+      </div>
+
+      <!-- Login Form Container -->
+      <div id="login-form-container" class="auth-form-view">
+        <h2 class="auth-heading">Welcome Back</h2>
+        <p class="auth-subheading">Access your secure digital document locker.</p>
+        <form id="login-form" novalidate>
+          <div class="form-group">
+            <label for="login-email">Email Address</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-envelope input-icon"></i>
+              <input type="email" id="login-email" class="form-control" placeholder="student@example.com" required autocomplete="email">
+            </div>
+            <span class="field-error" id="error-login-email"></span>
+          </div>
+          <div class="form-group">
+            <label for="login-password">Password</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input type="password" id="login-password" class="form-control" placeholder="••••••••" required autocomplete="current-password">
+              <button type="button" class="toggle-pw-btn" data-target="login-password">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <span class="field-error" id="error-login-password"></span>
+          </div>
+          <div class="form-alert hidden" id="login-alert"></div>
+          <button type="submit" id="login-submit-btn" class="btn btn-primary btn-block">
+            <span class="btn-text">Sign In</span>
+            <span class="btn-spinner hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> Logging in...</span>
+          </button>
+          <div class="auth-switch-prompt" style="text-align: center; margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-muted);">
+            Don't have an account? <button type="button" id="switch-to-register-btn" style="background: none; border: none; color: var(--primary-color); font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0;">Register here</button>
+          </div>
+        </form>
+      </div>
+
+      <!-- Register Form Container -->
+      <div id="register-form-container" class="auth-form-view hidden">
+        <h2 class="auth-heading">Create Account</h2>
+        <p class="auth-subheading">Register your digital locker account in seconds.</p>
+        <form id="register-form" novalidate>
+          <div class="form-group">
+            <label for="reg-fullname">Full Name</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-user input-icon"></i>
+              <input type="text" id="reg-fullname" class="form-control" placeholder="Alex Morgan" required autocomplete="name">
+            </div>
+            <span class="field-error" id="error-reg-fullname"></span>
+          </div>
+          <div class="form-group">
+            <label for="reg-email">Email Address</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-envelope input-icon"></i>
+              <input type="email" id="reg-email" class="form-control" placeholder="alex@example.com" required autocomplete="email">
+            </div>
+            <span class="field-error" id="error-reg-email"></span>
+          </div>
+          <div class="form-group">
+            <label for="reg-password">Password</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-lock input-icon"></i>
+              <input type="password" id="reg-password" class="form-control" placeholder="At least 8 characters" required autocomplete="new-password">
+              <button type="button" class="toggle-pw-btn" data-target="reg-password">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <span class="field-error" id="error-reg-password"></span>
+          </div>
+          <div class="form-group">
+            <label for="reg-confirm-password">Confirm Password</label>
+            <div class="input-icon-wrapper">
+              <i class="fa-solid fa-shield-check input-icon"></i>
+              <input type="password" id="reg-confirm-password" class="form-control" placeholder="Re-enter password" required autocomplete="new-password">
+              <button type="button" class="toggle-pw-btn" data-target="reg-confirm-password">
+                <i class="fa-solid fa-eye"></i>
+              </button>
+            </div>
+            <span class="field-error" id="error-reg-confirm-password"></span>
+          </div>
+          <div class="form-alert hidden" id="register-alert"></div>
+          <button type="submit" id="register-submit-btn" class="btn btn-primary btn-block">
+            <span class="btn-text">Create Account</span>
+            <span class="btn-spinner hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> Registering...</span>
+          </button>
+          <div class="auth-switch-prompt" style="text-align: center; margin-top: 1.25rem; font-size: 0.875rem; color: var(--text-muted);">
+            Already have an account? <button type="button" id="switch-to-login-btn" style="background: none; border: none; color: var(--primary-color); font-weight: 600; cursor: pointer; text-decoration: underline; padding: 0;">Log in here</button>
+          </div>
+        </form>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 3. AUTHENTICATED APP DASHBOARD LAYOUT -->
+  <!-- ========================================== -->
+  <div id="app-view" class="view-section hidden">
+    <div class="app-layout">
+      <!-- Sidebar Nav -->
+      <aside class="sidebar">
+        <div class="sidebar-brand">
+          <i class="fa-solid fa-vault brand-icon"></i>
+          <span class="brand-text">DigiLocker</span>
+        </div>
+        <nav class="sidebar-menu">
+          <button id="nav-item-dashboard" class="sidebar-btn active">
+            <i class="fa-solid fa-chart-pie"></i> <span>Dashboard</span>
+          </button>
+          <button id="nav-item-documents" class="sidebar-btn">
+            <i class="fa-solid fa-folder-open"></i> <span>My Documents</span>
+          </button>
+          <button id="nav-item-profile" class="sidebar-btn">
+            <i class="fa-solid fa-user-gear"></i> <span>Account Settings</span>
+          </button>
+        </nav>
+        <div class="sidebar-footer">
+          <button id="sidebar-logout-btn" class="sidebar-btn logout-btn">
+            <i class="fa-solid fa-right-from-bracket"></i> <span>Log Out</span>
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content Area -->
+      <main class="main-content">
+        <!-- Top App Bar -->
+        <header class="top-app-bar">
+          <div class="top-bar-left">
+            <button id="mobile-menu-toggle" class="btn-icon mobile-only"><i class="fa-solid fa-bars"></i></button>
+            <h1 id="page-heading" class="page-heading">Dashboard</h1>
+          </div>
+          <div class="top-bar-right">
+            <button id="quick-upload-header-btn" class="btn btn-primary btn-sm">
+              <i class="fa-solid fa-cloud-arrow-up"></i> <span>Upload File</span>
+            </button>
+            <div class="user-profile-badge" id="user-profile-badge">
+              <div class="user-avatar" id="user-avatar-text">U</div>
+              <div class="user-info">
+                <span class="user-name" id="user-display-name">User Name</span>
+                <span class="user-email" id="user-display-email">user@example.com</span>
+              </div>
+            </div>
+          </div>
+        </header>
+
+        <!-- Dynamic Content Subviews -->
+        <div class="content-body">
+          
+          <!-- SUBVIEW A: DASHBOARD HOME -->
+          <div id="subview-dashboard" class="subview active">
+            <!-- Welcome Banner -->
+            <div class="welcome-banner">
+              <div class="welcome-text">
+                <h2>Welcome back, <span id="welcome-user-name">Student</span> 👋</h2>
+                <p>Manage, view, and store your digital certificates and documents securely.</p>
+              </div>
+              <button id="dash-upload-btn" class="btn btn-light">
+                <i class="fa-solid fa-plus"></i> Add New Document
+              </button>
+            </div>
+
+            <!-- Stats Overview Grid -->
+            <div class="stats-grid">
+              <div class="stat-card">
+                <div class="stat-icon icon-blue"><i class="fa-solid fa-file-lines"></i></div>
+                <div class="stat-data">
+                  <span class="stat-value" id="stat-total-docs">0</span>
+                  <span class="stat-name">Total Documents</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon icon-green"><i class="fa-solid fa-hard-drive"></i></div>
+                <div class="stat-data">
+                  <span class="stat-value" id="stat-storage-used">0 MB</span>
+                  <span class="stat-name">Storage Used</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon icon-purple"><i class="fa-solid fa-layer-group"></i></div>
+                <div class="stat-data">
+                  <span class="stat-value" id="stat-categories-count">0</span>
+                  <span class="stat-name">Categories</span>
+                </div>
+              </div>
+              <div class="stat-card">
+                <div class="stat-icon icon-orange"><i class="fa-solid fa-clock-rotate-left"></i></div>
+                <div class="stat-data">
+                  <span class="stat-value" id="stat-recent-upload">None</span>
+                  <span class="stat-name">Latest Upload</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Recent Documents Table Header -->
+            <div class="section-card">
+              <div class="card-header-bar">
+                <h3><i class="fa-solid fa-clock"></i> Recent Uploads</h3>
+                <button id="view-all-docs-btn" class="btn btn-text">View All <i class="fa-solid fa-arrow-right"></i></button>
+              </div>
+              <div class="card-body">
+                <div id="dash-recent-loading" class="loading-state hidden">
+                  <i class="fa-solid fa-circle-notch fa-spin"></i> Fetching documents...
+                </div>
+                <div id="dash-recent-list" class="recent-list-container"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBVIEW B: DOCUMENTS MANAGEMENT -->
+          <div id="subview-documents" class="subview hidden">
+            <!-- Controls Bar (Search, Category, Actions) -->
+            <div class="controls-bar">
+              <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="doc-search-input" placeholder="Search documents by title..." class="form-control">
+                <button id="doc-search-clear" class="clear-btn hidden"><i class="fa-solid fa-xmark"></i></button>
+              </div>
+              <div class="filter-controls">
+                <select id="doc-category-select" class="form-control select-control">
+                  <option value="">All Categories</option>
+                  <option value="Education">Education</option>
+                  <option value="Identity">Identity</option>
+                  <option value="Academics">Academics</option>
+                  <option value="Financial">Financial</option>
+                  <option value="Personal">Personal</option>
+                  <option value="Work">Work</option>
+                  <option value="Misc">Misc</option>
+                </select>
+                <button id="doc-refresh-btn" class="btn btn-icon-only" title="Refresh List">
+                  <i class="fa-solid fa-arrows-rotate"></i>
+                </button>
+                <button id="doc-upload-main-btn" class="btn btn-primary">
+                  <i class="fa-solid fa-plus"></i> Upload Document
+                </button>
+              </div>
+            </div>
+
+            <!-- Documents View Container -->
+            <div id="docs-loading" class="loading-state hidden">
+              <i class="fa-solid fa-spinner fa-spin fa-2x"></i>
+              <p>Loading your locker documents...</p>
+            </div>
+
+            <div id="docs-error" class="error-card hidden">
+              <i class="fa-solid fa-triangle-exclamation fa-2x"></i>
+              <p id="docs-error-message">Failed to load documents.</p>
+              <button id="docs-retry-btn" class="btn btn-outline btn-sm">Retry</button>
+            </div>
+
+            <!-- Documents Table/Grid -->
+            <div id="docs-container" class="docs-grid"></div>
+
+            <!-- Pagination Bar -->
+            <div class="pagination-bar" id="docs-pagination">
+              <span class="pagination-info" id="pagination-info-text">Showing 0 documents</span>
+              <div class="pagination-controls">
+                <button id="pagination-prev" class="btn btn-sm btn-outline" disabled><i class="fa-solid fa-chevron-left"></i> Previous</button>
+                <span class="page-num-badge" id="pagination-page-num">Page 1 of 1</span>
+                <button id="pagination-next" class="btn btn-sm btn-outline" disabled>Next <i class="fa-solid fa-chevron-right"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- SUBVIEW C: USER PROFILE SETTINGS -->
+          <div id="subview-profile" class="subview hidden">
+            <div class="profile-grid">
+              <!-- Account Profile Info Card -->
+              <div class="section-card">
+                <div class="card-header-bar">
+                  <h3><i class="fa-solid fa-id-card"></i> User Profile</h3>
+                </div>
+                <div class="card-body">
+                  <form id="profile-update-form">
+                    <div class="form-group">
+                      <label for="prof-fullname">Full Name</label>
+                      <input type="text" id="prof-fullname" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                      <label for="prof-email">Email Address (Read-only)</label>
+                      <input type="email" id="prof-email" class="form-control" disabled readonly>
+                    </div>
+                    <button type="submit" id="profile-save-btn" class="btn btn-primary">Save Profile Changes</button>
+                  </form>
+                </div>
+              </div>
+
+              <!-- Security / Password Change Card -->
+              <div class="section-card">
+                <div class="card-header-bar">
+                  <h3><i class="fa-solid fa-shield-halved"></i> Change Password</h3>
+                </div>
+                <div class="card-body">
+                  <form id="change-pw-form">
+                    <div class="form-group">
+                      <label for="pw-current">Current Password</label>
+                      <input type="password" id="pw-current" class="form-control" required autocomplete="current-password">
+                    </div>
+                    <div class="form-group">
+                      <label for="pw-new">New Password (Min 8 chars)</label>
+                      <input type="password" id="pw-new" class="form-control" required autocomplete="new-password">
+                    </div>
+                    <button type="submit" id="change-pw-btn" class="btn btn-warning">Update Password</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </main>
+    </div>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- 4. MODALS FOR DOCUMENT ACTIONS -->
+  <!-- ========================================== -->
+
+  <!-- UPLOAD DOCUMENT MODAL -->
+  <div id="upload-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-cloud-arrow-up"></i> Upload Document</h3>
+        <button class="modal-close-btn" id="upload-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="upload-form">
+        <div class="modal-body">
+          <!-- Drag and Drop Zone -->
+          <div id="drop-zone" class="drop-zone">
+            <i class="fa-solid fa-cloud-arrow-up drop-icon"></i>
+            <p class="drop-text">Drag and drop your file here, or <span class="browse-link">browse file</span></p>
+            <p class="drop-subtext">Supported formats: PDF, PNG, JPG, JPEG, TXT, DOCX (Max 10 MB)</p>
+            <input type="file" id="file-input" name="file" class="hidden-file-input" accept=".pdf,.png,.jpg,.jpeg,.txt,.docx" required>
+          </div>
+
+          <!-- File Info Badge when selected -->
+          <div id="selected-file-info" class="selected-file-card hidden">
+            <div class="file-icon-box" id="file-type-icon"><i class="fa-solid fa-file"></i></div>
+            <div class="file-details">
+              <span class="file-name" id="selected-file-name">filename.pdf</span>
+              <span class="file-size" id="selected-file-size">1.2 MB</span>
+            </div>
+            <button type="button" id="remove-selected-file" class="btn-icon-only text-danger" title="Remove file"><i class="fa-solid fa-trash"></i></button>
+          </div>
+
+          <div class="form-group">
+            <label for="upload-title">Document Title *</label>
+            <input type="text" id="upload-title" name="title" class="form-control" placeholder="e.g. Graduation Degree Certificate" required minlength="2" maxlength="200">
+          </div>
+
+          <div class="form-group">
+            <label for="upload-category">Category *</label>
+            <select id="upload-category" name="category" class="form-control select-control" required>
+              <option value="">Select Category...</option>
+              <option value="Education">Education</option>
+              <option value="Identity">Identity</option>
+              <option value="Academics">Academics</option>
+              <option value="Financial">Financial</option>
+              <option value="Personal">Personal</option>
+              <option value="Work">Work</option>
+              <option value="Misc">Misc</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="upload-description">Description (Optional)</label>
+            <textarea id="upload-description" name="description" class="form-control" rows="3" placeholder="Brief notes or description of this document..." maxlength="1000"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="upload-cancel-btn">Cancel</button>
+          <button type="submit" id="upload-submit-btn" class="btn btn-primary" disabled>
+            <span class="btn-text"><i class="fa-solid fa-upload"></i> Upload to Locker</span>
+            <span class="btn-spinner hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> Uploading...</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- EDIT DOCUMENT MODAL -->
+  <div id="edit-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-pen-to-square"></i> Edit Document Metadata</h3>
+        <button class="modal-close-btn" id="edit-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <form id="edit-form">
+        <input type="hidden" id="edit-doc-id">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="edit-title">Document Title *</label>
+            <input type="text" id="edit-title" class="form-control" required minlength="2" maxlength="200">
+          </div>
+          <div class="form-group">
+            <label for="edit-category">Category *</label>
+            <select id="edit-category" class="form-control select-control" required>
+              <option value="Education">Education</option>
+              <option value="Identity">Identity</option>
+              <option value="Academics">Academics</option>
+              <option value="Financial">Financial</option>
+              <option value="Personal">Personal</option>
+              <option value="Work">Work</option>
+              <option value="Misc">Misc</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="edit-description">Description</label>
+            <textarea id="edit-description" class="form-control" rows="3" maxlength="1000"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline" id="edit-cancel-btn">Cancel</button>
+          <button type="submit" id="edit-submit-btn" class="btn btn-primary">
+            <span class="btn-text">Save Changes</span>
+            <span class="btn-spinner hidden"><i class="fa-solid fa-circle-notch fa-spin"></i> Saving...</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- DOCUMENT DETAILS MODAL -->
+  <div id="details-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-circle-info"></i> Document Details</h3>
+        <button class="modal-close-btn" id="details-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="details-grid">
+          <div class="detail-row">
+            <span class="detail-label">Title</span>
+            <span class="detail-val" id="detail-title">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Category</span>
+            <span class="detail-val" id="detail-category">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Original Filename</span>
+            <span class="detail-val" id="detail-filename">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">MIME Type</span>
+            <span class="detail-val" id="detail-mime">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">File Size</span>
+            <span class="detail-val" id="detail-size">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Uploaded At</span>
+            <span class="detail-val" id="detail-uploaded">-</span>
+          </div>
+          <div class="detail-row">
+            <span class="detail-label">Description</span>
+            <span class="detail-val" id="detail-description">None</span>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="details-close-btn">Close</button>
+        <button type="button" class="btn btn-primary" id="details-download-btn"><i class="fa-solid fa-download"></i> Download File</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DELETE CONFIRMATION MODAL -->
+  <div id="delete-modal" class="modal-overlay hidden">
+    <div class="modal-card modal-sm">
+      <div class="modal-header">
+        <h3 class="text-danger"><i class="fa-solid fa-triangle-exclamation"></i> Confirm Deletion</h3>
+        <button class="modal-close-btn" id="delete-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete <strong id="delete-doc-name">this document</strong>?</p>
+        <p class="text-muted text-sm mt-2">This action is permanent and cannot be undone.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="delete-cancel-btn">Cancel</button>
+        <button type="button" class="btn btn-danger" id="delete-confirm-btn">
+          <i class="fa-solid fa-trash"></i> Delete Document
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEMO / PRODUCT WALKTHROUGH MODAL -->
+  <div id="demo-modal" class="modal-overlay hidden">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-play"></i> Product Walkthrough</h3>
+        <button class="modal-close-btn" id="demo-modal-close"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="walkthrough-steps" style="display: flex; flex-direction: column; gap: 1.25rem;">
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--primary-light); color: var(--primary-color); display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">1</div>
+            <div>
+              <h4 style="margin-bottom: 0.25rem;">Create Your Secure Account</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">Register with your email and a strong password. Credentials are cryptographically protected with bcrypt.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--primary-light); color: var(--primary-color); display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">2</div>
+            <div>
+              <h4 style="margin-bottom: 0.25rem;">Upload & Organize Documents</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">Drag and drop PDF, PNG, JPG, DOCX, or TXT files. Automatic magic-byte inspection verifies file integrity.</p>
+            </div>
+          </div>
+          <div style="display: flex; gap: 1rem; align-items: flex-start;">
+            <div style="width: 36px; height: 36px; border-radius: 50%; background: var(--primary-light); color: var(--primary-color); display: flex; align-items: center; justify-content: center; font-weight: bold; flex-shrink: 0;">3</div>
+            <div>
+              <h4 style="margin-bottom: 0.25rem;">Search, Manage & Download</h4>
+              <p class="text-muted" style="font-size: 0.9rem;">Instant search, category filtering, metadata updates, and secure one-click downloads with preserved filenames.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-outline" id="demo-close-btn">Close</button>
+        <button type="button" class="btn btn-primary" id="demo-start-btn"><i class="fa-solid fa-rocket"></i> Get Started</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="/js/api.js"></script>
+  <script src="/js/app.js"></script>
+</body>
+</html>
