@@ -3,15 +3,15 @@ services:
   - type: web
     name: smart-digital-locker-backend
     runtime: docker
-    dockerfilePath: backend/Dockerfile
-    dockerContext: backend
+    dockerfilePath: backend-spring/Dockerfile
+    dockerContext: backend-spring
     plan: free
     region: oregon
     envVars:
       - key: PORT
         value: 8080
       - key: DB_URL
-        sync: false # Set to your MySQL JDBC connection URL (e.g. from Aiven or Clever Cloud)
+        sync: false # Set to your Aiven MySQL JDBC URL
       - key: DB_USERNAME
         sync: false
       - key: DB_PASSWORD
@@ -23,20 +23,19 @@ services:
       - key: UPLOAD_DIR
         value: /app/uploads
       - key: ALLOWED_ORIGINS
-        sync: false # Set to your deployed frontend URL (e.g. https://smart-digital-locker.onrender.com)
+        sync: false # Set to your deployed frontend URL (e.g. https://smart-digital-locker-frontend.onrender.com)
 
   # React Frontend (Static Site)
-  - type: web
+  - type: static
     name: smart-digital-locker-frontend
-    runtime: static
-    rootDir: frontend
+    rootDir: frontend-react
     buildCommand: npm install && npm run build
     staticPublishPath: dist
     plan: free
     region: oregon
     envVars:
       - key: VITE_API_BASE_URL
-        sync: false # Set to your backend URL (e.g. https://smart-digital-locker-backend.onrender.com/api)
+        sync: false # Set to backend URL (e.g. https://smart-digital-locker-backend.onrender.com/api)
     routes:
       - type: rewrite
         source: /*

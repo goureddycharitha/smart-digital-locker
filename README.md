@@ -113,14 +113,14 @@ Option 1: Using root npm shortcut:
 ```bash
 npm run start:backend
 ```
-Option 2: Using Maven directly in `backend/`:
+Option 2: Using Maven directly in `backend-spring/`:
 ```bash
-cd backend
+cd backend-spring
 mvn spring-boot:run
 ```
 Option 3: Running the packaged JAR:
 ```bash
-java -jar backend/target/smart-digital-locker-backend-1.0.0.jar
+java -jar backend-spring/target/smart-digital-locker-backend-1.0.0.jar
 ```
 *Backend runs on `http://localhost:8080`.*
 
@@ -129,9 +129,9 @@ Option 1: Using root npm shortcut:
 ```bash
 npm run start:frontend
 ```
-Option 2: Running directly in `frontend/`:
+Option 2: Running directly in `frontend-react/`:
 ```bash
-cd frontend
+cd frontend-react
 npm run dev
 ```
 *Frontend runs on `http://localhost:5173`.*
@@ -162,7 +162,7 @@ npm run dev
 
 Run the full automated test suite using Maven:
 ```bash
-mvn -f backend/pom.xml test
+mvn -f backend-spring/pom.xml test
 ```
 Or via root npm script:
 ```bash
