@@ -1,22 +1,28 @@
 {
   "name": "smart-digital-locker-root",
-  "version": "1.0.0",
-  "description": "Smart Digital Locker - Decoupled Frontend and Backend System",
+  "version": "2.0.0",
+  "description": "Smart Digital Locker - Full-Stack Spring Boot + MySQL + React Document Vault",
   "scripts": {
-    "start:backend": "npm --prefix backend start",
-    "dev:backend": "npm --prefix backend run dev",
-    "start:frontend": "npm --prefix frontend start",
-    "dev:frontend": "npm --prefix frontend run dev",
-    "test:backend": "npm --prefix backend test",
-    "test": "npm --prefix backend test"
+    "start:backend": "java -jar backend-spring/target/smart-digital-locker-backend-1.0.0.jar",
+    "dev:backend": "node scripts/run-mvn.js -f backend-spring/pom.xml spring-boot:run",
+    "build:backend": "node scripts/run-mvn.js -f backend-spring/pom.xml clean package -DskipTests",
+    "test:backend": "node scripts/run-mvn.js -f backend-spring/pom.xml test",
+    "start:frontend": "npm --prefix frontend-react run dev",
+    "dev:frontend": "npm --prefix frontend-react run dev",
+    "build:frontend": "npm --prefix frontend-react run build",
+    "test": "node scripts/run-mvn.js -f backend-spring/pom.xml test",
+    "db:status": "node scripts/check-mysql-db.js",
+    "db:migrate": "node scripts/migrate-sqlite-to-mysql.js"
   },
   "keywords": [
     "digital-locker",
-    "express",
-    "sqlite",
-    "frontend",
-    "backend"
+    "spring-boot",
+    "java",
+    "mysql",
+    "react",
+    "jwt",
+    "security"
   ],
   "author": "Smart Digital Locker Team",
-  "license": "ISC"
+  "license": "MIT"
 }
