@@ -5,12 +5,12 @@ node_modules/
 
 # Maven build output
 target/
-backend-spring/target/
+backend/target/
 *.class
 
 # Frontend build output
 dist/
-frontend-react/dist/
+frontend/dist/
 build/
 
 # Environment variables and secrets
@@ -28,12 +28,12 @@ build/
 *.sqlite-shm
 database/*.sqlite
 database/*.db
+*.sql
+scripts/*.sql
 
 # Uploaded documents (keep directory structure)
 uploads/*
 !uploads/.gitkeep
-backend-spring/uploads/*
-!backend-spring/uploads/.gitkeep
 backend/uploads/*
 !backend/uploads/.gitkeep
 

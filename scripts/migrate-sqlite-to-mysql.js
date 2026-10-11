@@ -4,12 +4,27 @@
  */
 const fs = require('fs');
 const path = require('path');
-const Database = require(path.resolve(__dirname, '../backend/node_modules/better-sqlite3'));
+let Database;
+const backupBetterSqlite = 'C:/Users/gchar/Downloads/Digilocker_backup_nodejs_sqlite/backend/node_modules/better-sqlite3';
+try {
+  Database = require(backupBetterSqlite);
+} catch (e) {
+  try {
+    Database = require(path.resolve(__dirname, '../backend/node_modules/better-sqlite3'));
+  } catch (err) {
+    Database = require('better-sqlite3');
+  }
+}
 
-const sqlitePath = path.resolve(__dirname, '../backend/database/locker.sqlite');
+let sqlitePath = path.resolve(__dirname, '../backend/database/locker.sqlite');
 if (!fs.existsSync(sqlitePath)) {
-  console.error('SQLite database not found at:', sqlitePath);
-  process.exit(1);
+  const backupSqlite = 'C:/Users/gchar/Downloads/Digilocker_backup_nodejs_sqlite/backend/database/locker.sqlite';
+  if (fs.existsSync(backupSqlite)) {
+    sqlitePath = backupSqlite;
+  } else {
+    console.error('SQLite database not found at:', sqlitePath, 'or backup path');
+    process.exit(1);
+  }
 }
 
 const db = new Database(sqlitePath, { readonly: true });
